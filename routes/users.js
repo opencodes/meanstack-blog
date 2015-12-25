@@ -11,7 +11,7 @@ router.post('/user/register', function(req, res, next) {
 	  	password : req.body.password,
 	  	email : req.body.email
 	  };
-	  console.log(req.body);
+	  
 	  //Get the documents collection
 	  var users = db.collection('users');
 	  users.insert(userFormData, function (err, result) {
@@ -36,11 +36,11 @@ router.post('/user/login', function(req, res, next) {
 		  	username : req.body.username,
 		  	password : req.body.password,
 		  };
-		  console.log(req.body);
+		  
 		  //Get the documents collection
 		  var users = db.collection('users');
-		  users.find(userFormData).toArray(function(err, result){
-		  	console.log(err || result);
+		  
+		  users.findOne(userFormData, {fields:{username:1,email:1}}, function(err, result) {
 		  	if (err) {
 		  		res.json({"status":false,"message":err});
 		  	}else{

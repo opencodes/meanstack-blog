@@ -3,9 +3,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	var db = req.db;
-  	res.json({ "title": "Index Application", "databaseName": db.databaseName});
+  	res.render('client/views/index.html');
 });
-
-
 module.exports = router;
