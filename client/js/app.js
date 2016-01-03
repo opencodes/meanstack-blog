@@ -186,10 +186,10 @@
 			$rootScope.user_id = window.localStorage.getItem('user_id') || null;
 			$rootScope.lastId = window.localStorage.getItem('lastId') || null;
 			//next : $$route {all route params,originalPath}
-			if (!$rootScope.user && next.$$route.originalPath != "/user/signup") { $location.path('/user/login')};			
-		});
-		
-		
+			if (!$rootScope.user && next.$$route.originalPath != "/user/signup") { 
+				$location.path('/user/login')
+			};			
+		});		
         $http.defaults.useXDomain = true;
         delete $http.defaults.headers.common['X-Requested-With'];
     }

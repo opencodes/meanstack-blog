@@ -10,21 +10,25 @@
     <div class="media-body"> 
       <h2 class="media-heading"> <a href="#/post/id/{{post._id}}">{{post.title}}</a> <small>Secondary text</small></h2> 
       <p> {{post.description}}</p> 
-      <p><span>By : <strong>{{post.postedby}}</strong></span><span> Comment : <strong>{{post.comments.length}}</strong></span> </p>
-      <p>
-        <ul class="list-unstyled">
-          <li ng-repeat="comm in post.comments">
-            <p><span><strong>{{comm.user}}</strong> </span> | <span><strong>{{post.datetime}}</strong></span></p>
-            <p>{{comm.comment}}</p>
-            
-          </li>
-        </ul>
-      </p>
-      <div class="col-lg-6">
+
+
+        
+        <div class="media" ng-repeat="comm in post.comments"> 
+          <div class="media-left">
+            <img  style="width: 24px; height: 24px;" src="img/avtar.jpg">
+          </div><div class="media-body"> 
+          <h4 class="media-heading"><small><strong>{{comm.user}}</strong> </small> | <small><strong>{{post.datetime}}</strong></small></h4> 
+          {{comm.comment}}
+          </div> 
+        </div>
+
+      <div>
+      <hr/>
         <form>
         <div class="form-group" >
           <label for="exampleInputEmail1">Comment</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Comment" ng-model="comment.comment">
+          <textarea type="text" class="form-control" id="exampleInputEmail1" placeholder="Comment" ng-model="comment.comment">
+          </textarea>
         </div>
        
         <button type="submit" class="btn btn-default" ng-click="submitComment(comment)">Add Comment</button>
