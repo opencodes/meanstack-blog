@@ -13,11 +13,11 @@ router.post('/blog/post', function(req, res, next) {
 		"comments" :[],
 		"datetime" : new Date().toDateString()
 	  };
-	  console.log(post);
+	  //console.log(post);
 	  //Get the documents collection
 	  var posts = db.collection('posts');
 	  posts.insert(post, function (err, result) {
-	  	console.log(err || result);
+	  	//console.log(err || result);
 	  	if (err) {
 	  		res.json({"status":false,"message":err});
 	  	}else{
@@ -40,24 +40,24 @@ router.get('/blog/post/list', function(req, res, next) {
 			res.json({"status":false,"message":err});
 		}else{
 			var users = [];
-			console.log("Post Length", result.length);
+			//console.log("Post Length", result.length);
 			if(!result.length){
 				res.json({"status":false,"message":"No post found."});
 			}else{
 				for(var k in result){
 					users.push(result[k].user_id);
 				}
-				console.log("users", users)
+				//console.log("users", users)
 				req.db.collection('users').find({"_id" : {$in : users}}, {fields:{username:1}}, function(err, userList) {
 				  	if (err) {
 				  		res.json({"status":false,"message":err});
 				  	}else{
-				  		console.log("userList", userList)
+				  		//console.log("userList", userList)
 				  		for(var key in result) {
-				  			console.log("post", result[key])
+				  			//console.log("post", result[key])
 				  			result[key].user_id = userList[result[key].user_id];
 				  		};
-				  		console.log("final result", result)
+				  		//console.log("final result", result)
 				  		res.json({"status":true,data:result});
 				  	}
 				  	
@@ -102,7 +102,7 @@ router.post('/blog/post/comment', function(req, res, next) {
 		"comment" : req.body.comment,
 		"datetime" : new Date().toDateString()
 	  };
-	  console.log('comment',req.body)
+	  //console.log('comment',req.body)
 	  //Get the documents collection
 	  var posts = db.collection('posts');
       // executing the command safely
@@ -117,6 +117,22 @@ router.post('/blog/post/comment', function(req, res, next) {
   		res.json({"status":false, "message":"No Post data."});
   }  
   
+});
+
+router.get('/posts/list', function(req, res, next) {	  
+      var db = req.db;	  
+      //Get the documents collection
+      var users = db.collection('posts');
+
+      users.find({}).toArray(function(err, result) {
+        if (err) {
+            res.json({"status":false,"message":err});
+        }else{
+            res.json(result);
+        }
+
+      });
+	  
 });
 
 module.exports = router;

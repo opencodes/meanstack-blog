@@ -15,7 +15,7 @@ router.post('/user/register', function(req, res, next) {
 	  //Get the documents collection
 	  var users = db.collection('users');
 	  users.insert(userFormData, function (err, result) {
-	  	console.log(err || result);
+	  	//console.log(err || result);
 	  	if (err) {
 	  		res.json({"status":false,"message":err});
 	  	}else{
@@ -51,6 +51,22 @@ router.post('/user/login', function(req, res, next) {
 	  }else{
 	  		res.json({"status":false, "message":"Any of the field[username|password|email] is missiong."});
 	  }
+});
+
+router.get('/user/list', function(req, res, next) {	  
+      var db = req.db;	  
+      //Get the documents collection
+      var users = db.collection('users');
+
+      users.find({}).toArray(function(err, result) {
+        if (err) {
+            res.json({"status":false,"message":err});
+        }else{
+            res.json(result);
+        }
+
+      });
+	  
 });
 
 module.exports = router;
