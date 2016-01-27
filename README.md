@@ -40,7 +40,21 @@ Create the MongoDB service
 > sc.exe create MongoDB binPath= "C:\mongodb\bin\mongod.exe --service --config=\"C:\mongodb\mongod.cfg\"" DisplayName= "mongodb" start= "auto"
 
 Note: sc.exe requires a space between “=” and the configuration values (eg “binPath= ”), and a “\” to escape double quotes.
-    
-    net start mongodb
-    net stop mongodb
-    sc.exe delete mongodb
+
+If successfully created, the following log message will display:
+
+[SC] CreateService SUCCESS
+
+Start the MongoDB service.
+
+> net start MongoDB
+
+
+To stop the MongoDB service, use the following command:
+
+> net stop MongoDB
+
+To remove the MongoDB service, first stop the service and then run the following command:
+
+>sc.exe delete MongoDB
+
