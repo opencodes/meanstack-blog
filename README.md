@@ -14,7 +14,7 @@ Start MongoDB
 
 Connect to MongoDB  
 > C:\mongodb\bin\mongo.exe
-> 
+
 ## Create a Windows Service for MongoDB ##
 
 You can set up the MongoDB server as a Windows Service that starts automatically at boot time.
