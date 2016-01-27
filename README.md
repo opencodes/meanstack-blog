@@ -110,8 +110,7 @@ To remove the MongoDB service, first stop the service and then run the following
 
 2. Update app.js to import mongodb module and initialize MongoClient
 
- ````  
-
+ ````
 // Mongo Db Connection  
 var MongoClient = require('mongodb').MongoClient;  
 // Connection URL  
@@ -131,6 +130,5 @@ MongoClient.connect(url, function(err, db) {
 	next();    
 	 });  
 }); 
-
 ````
  
