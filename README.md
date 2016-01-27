@@ -1,5 +1,6 @@
 # meanstack-blog
-## Set up the MongoDB environment. ##
+## MongoDB ##
+### Set up the MongoDB environment. ###
 
 MongoDB requires a data directory to store all data. MongoDB’s default data directory path is \data\db. You can specify an alternate path for data files using the --dbpath option to mongod.exe, for example:
 
@@ -15,7 +16,7 @@ Start MongoDB
 Connect to MongoDB  
 > C:\mongodb\bin\mongo.exe
 
-## Create a Windows Service for MongoDB ##
+### Create a Windows Service for MongoDB ###
 
 You can set up the MongoDB server as a Windows Service that starts automatically at boot time.
 Open a command prompt as administrator.
@@ -43,7 +44,7 @@ Note: sc.exe requires a space between “=” and the configuration values (eg �
 
 If successfully created, the following log message will display:
 
-[SC] CreateService SUCCESS
+> [SC] CreateService SUCCESS
 
 Start the MongoDB service.
 
@@ -58,3 +59,42 @@ To remove the MongoDB service, first stop the service and then run the following
 
 >sc.exe delete MongoDB
 
+## Server Programming with Node.js & Express JS ##
+
+### Node.js Installation ###
+
+1. Download Node.js from [https://nodejs.org/en/download/][1]
+2. Run the installer, A set of screens will appear to guide you through the installation process.
+3. To check open cmd and run
+  > node –v  // it will return installed node.js version.
+
+### Express Setup ###
+1. Create directory blogapp for application 
+ > mkdir meanstack-blog
+2. Locate to directory
+
+ > cd meanstack-blog
+
+3. Install express-generator globally
+
+ > npm install express-generator –g
+
+4. Create express application with default template at current location 
+
+ > express . // dot for current directory
+
+5. Install dependencies 
+
+ > npm install
+
+6. Run app 
+
+ > npm start 
+
+7. View application
+
+   Open url [http://localhost:3000/][2] in your browser to access the app. 
+
+
+  [1]: https://nodejs.org/en/download/
+  [2]: http://localhost:3000/
