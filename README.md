@@ -131,4 +131,122 @@ MongoClient.connect(url, function(err, db) {
 	 });  
 }); 
 ````
- 
+
+- The **app.use** statements are establishing middleware for Express.
+- The short, simple explanation is: they're providing custom functions that the rest of your app can make use of.
+- It runs before our route definitions, so that they can make use of it.
+By adding this function to **app.use**, we're adding db object to every HTTP request (ie: "req") our app makes use of that.
+
+#### REST- API Development ####
+
+##### User Module #####
+
+**URL: /user/register** 
+
+METHOD: POST 
+
+PARAMS : 
+
+````
+{
+"username" : "",
+"password" : "",
+"emai":""
+}
+````
+
+RESPONSE:
+
+````
+{
+"status":"", "message":""
+}
+````
+
+**URL: /user/login** 
+
+METHOD: POST 
+
+PARAMS : 
+
+````
+{
+username : "",
+password : ""
+}
+````
+
+RESPONSE:
+
+````
+{
+"status":"",
+"data":{
+"user_id":"",
+"email_id":""}
+}
+````
+
+##### BLOG POST API #####
+**URL: /blog/post/list** 
+
+METHOD: GET
+
+PARAMS : 
+
+````
+{}
+````
+
+RESPONSE:
+
+````
+{
+_id":"",
+"title":"", "description":"",
+"user_id":"", "comments":[{
+"comment":"",
+"user_id":"}]
+}
+````
+**URL: /blog/post/add** 
+
+METHOD: POST 
+
+PARAMS : 
+
+````
+{"title":"",
+"description":"",
+"user_id":"",
+"comments":[{
+"comment":"",
+"user_id":"}]}
+````
+
+RESPONSE:
+
+````
+{
+"status":"", "message":""
+}
+````
+**URL: /blog/post/comment/add** 
+
+METHOD: POST 
+
+PARAMS : 
+
+````
+{"post_id":"",
+"user_id":"",
+"comment" : ""}
+````
+
+RESPONSE:
+
+````
+{
+"status":"", "message":""
+}
+````
