@@ -70,7 +70,9 @@ To remove the MongoDB service, first stop the service and then run the following
 
 ### Express Setup ###
 1. Create directory blogapp for application 
+
  > mkdir meanstack-blog
+
 2. Locate to directory
 
  > cd meanstack-blog
@@ -98,3 +100,35 @@ To remove the MongoDB service, first stop the service and then run the following
 
   [1]: https://nodejs.org/en/download/
   [2]: http://localhost:3000/
+
+
+### MongoDB connection ###
+
+1. Install MongoDb driver
+ 
+ > npm install mongodb –save 
+
+2. Update app.js to import mongodb module and initialize MongoClient
+
+    // Mongo Db Connection  
+    var MongoClient = require('mongodb').MongoClient;  
+    // Connection URL  
+    var url = 'mongodb://localhost:27017/blog';
+    
+    
+    // Make our db accessible to our router  
+    app.use(function(req, res, next){     
+    // Use connect method to connect to the Server   
+    MongoClient.connect(url, function(err, db) {  		  
+        if(err){  
+    		console.log(null, err); }  
+    	  else{    
+    	       console.log("Connected to server");    
+    	       req.db = db;   
+    	  }  
+    	next();    
+    	 });  
+    }); 
+
+ 
+
