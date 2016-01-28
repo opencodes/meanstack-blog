@@ -250,3 +250,63 @@ RESPONSE:
 "status":"", "message":""
 }
 ````
+### Frontend development with Angular JS ####
+
+- Create client directory in main application
+
+  > mkdir client
+
+- Bower   
+A package manager for the web
+
+ Install bower globally : 
+
+ > npm install bower -g
+
+- Bootstrap
+Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
+
+  > bower install bootstrap
+
+- Angular
+
+ AngularJS is a structural framework for dynamic web apps.
+
+ > bower install angular
+
+ > bower install angular-route
+
+**Common MODULE**
+
+- Create file app.js in path client/js/.
+- Create module BlogAPP using angular module with ngRoute as dependency for route control.
+
+
+**USER MODULE**
+
+- Create UserService with login and signup method to call corresponding API.
+- Generate config add following functionality using controller and $rootProvider.
+- Below are the functionality need to develop
+
+``` 
+Route        Controller         View
+/            MainController     views/home.html 
+/user/signup SignupController   views/register.html 
+/user/login  LoginController    views/login.html  
+/user/logout LogoutController   NA
+```
+
+**Blog POST MODULE**
+
+- Create PostService with following method to call corresponding API.
+ - list: to get all posts
+ - byId: to get post by post id
+ - add: to add post
+ - comment : to add comment
+- Update config to add following functionality.
+
+````
+Route             Controller        View
+/post/id/:id      SignupController  views/register.html
+/post/add         LoginController   views/login.html
+````
