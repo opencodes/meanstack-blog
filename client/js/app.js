@@ -181,6 +181,7 @@
 	}]);
 
 	app.run(['$http','$rootScope','$location', function($http, $rootScope, $location) {
+
 		$rootScope.$on('$routeChangeStart', function (eve, next, curr) {
 			$rootScope.user = window.localStorage.getItem('user') || null;
 			$rootScope.user_id = window.localStorage.getItem('user_id') || null;
@@ -189,9 +190,9 @@
 			if (!$rootScope.user && next.$$route.originalPath != "/user/signup") { 
 				$location.path('/user/login')
 			};			
-		});		
-        $http.defaults.useXDomain = true;
-        delete $http.defaults.headers.common['X-Requested-With'];
+		});
+        
+       
     }
 ]);
 	

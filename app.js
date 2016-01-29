@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 // Mongo Db Connection
 var MongoClient = require('mongodb').MongoClient;
 // Connection URL
-var url = 'mongodb://labs:labs123@ds033123.mongolab.com:33123/labs';//'mongodb://localhost:27017/blog';
+var url = 'mongodb://localhost:27017/blog';
     
 
 
